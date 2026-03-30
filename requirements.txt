@@ -1,0 +1,6 @@
+flask>=3.0
+stripe>=8.0
+python-dotenv>=1.0
+pyjwt>=2.8
+gunicorn>=21.0
+requests>=2.31

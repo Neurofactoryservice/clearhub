@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr" data-design="neon" data-sec-order="3">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ClearHub — 404</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@300;400;700;900&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--primary:#38bdf8;--accent:#e0f2fe;--bg:#040f1e;
+           --text:#f0f9ff;--display-font:'Share Tech Mono',sans-serif;--body-font:'Rajdhani',sans-serif;
+           --df:'Share Tech Mono',sans-serif;--bf:'Rajdhani',sans-serif;
+           --radius-card:0px;--anim-speed:0.6s;--card-shadow:0 4px 20px #38bdf820;--display:'Share Tech Mono',sans-serif;
+           --body:'Rajdhani',sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body::after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.4}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes glowPulse{0%,100%{opacity:.7}50%{opacity:1}}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+    body{font-family:var(--body);background:var(--bg);color:var(--text);
+          min-height:100vh;display:flex;align-items:center;justify-content:center;
+          text-align:center;padding:24px;
+          background-image:radial-gradient(ellipse at 50% 40%,#38bdf815 0%,transparent 60%)}
+    .num{font-family:var(--display);font-size:clamp(6rem,20vw,12rem);font-weight:900;
+          line-height:1;background:linear-gradient(135deg,var(--primary),var(--accent));
+          -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+          background-clip:text;margin-bottom:16px}
+    h1{font-family:var(--display);font-size:clamp(1.4rem,3vw,2rem);
+        font-weight:700;margin-bottom:12px}
+    p{color:rgba(255,255,255,0.5);margin-bottom:36px;max-width:400px;margin-inline:auto}
+    .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .btn-p{padding:13px 30px;background:var(--primary);color:#fff;
+            border-radius:50px;text-decoration:none;font-weight:700;font-size:0.9rem;
+            transition:all 0.2s}
+    .btn-p:hover{opacity:0.9;transform:translateY(-1px)}
+    .btn-s{padding:13px 30px;border:1px solid rgba(255,255,255,0.15);
+            color:rgba(255,255,255,0.7);border-radius:50px;text-decoration:none;
+            font-size:0.9rem;transition:all 0.2s}
+    .btn-s:hover{border-color:var(--primary);color:var(--primary)}
+    /* ── Modern v27 (animations + effets) ──────────────────── */
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    @keyframes glowPulse{0%,100%{box-shadow:0 0 20px #38bdf830}50%{box-shadow:0 0 50px #38bdf860}}
+    @keyframes borderGlow{0%,100%{border-color:#38bdf850}50%{border-color:#38bdf8;box-shadow:0 0 16px #38bdf840}}
+    .section-title{background:linear-gradient(135deg,var(--text,#f1f5f9) 0%,#38bdf8cc 60%,var(--accent,#38bdf8) 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .card-title,.stat-val{font-family:var(--display,var(--df,sans-serif));font-weight:700}
+    .btn-primary{position:relative;overflow:hidden}
+    .btn-primary::after{content:'';position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);opacity:0;transition:opacity .2s}
+    .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.1)}
+    .btn-primary:hover::after{opacity:1}
+
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes glowPulse{0%,100%{box-shadow:0 0 30px #38bdf840}50%{box-shadow:0 0 80px #38bdf880}}
+    .num{animation:floatY 3s ease-in-out infinite;display:block}
+    .cta-group a{position:relative;overflow:hidden}
+    .cta-group a::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent);opacity:0;transition:opacity .2s}
+    .cta-group a:hover{transform:translateY(-2px);filter:brightness(1.1)}
+    .cta-group a:hover::after{opacity:1}
+    .card{transition:all .35s cubic-bezier(.4,0,.2,1)}
+    .card:hover{transform:translateY(-4px);
+      box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px var(--primary,.3);
+      border-color:rgba(255,255,255,.15)}
+  </style>
+</head>
+<body>
+  <div>
+    <div class="num">404</div>
+    <h1>🍽️ Page introuvable</h1>
+    <p>Oups ! Cette page n'existe pas ou a été déplacée.</p>
+    <div class="btns">
+      <a href="/" class="btn-p">Retour à l'accueil</a>
+      <a href="/app" class="btn-s">Accéder à l'app</a>
+    </div>
+  </div>
+
+<!-- ══ NEUROFACTORY AI CHAT WIDGET ══════════════════════════════════ -->
+<style>
+  .nf-chat-fab{
+    position:fixed;bottom:24px;right:24px;z-index:9990;
+    width:56px;height:56px;border-radius:50%;
+    background:linear-gradient(135deg,#38bdf8,#38bdf8cc);
+    border:none;cursor:pointer;box-shadow:0 4px 20px #38bdf866;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;transition:all .2s;
+    animation:nfPulse 3s ease-in-out infinite
+  }
+  .nf-chat-fab:hover{transform:scale(1.08);box-shadow:0 6px 28px #38bdf888}
+  .nf-chat-fab .nf-badge{
+    position:absolute;top:-2px;right:-2px;width:18px;height:18px;
+    background:#ef4444;border-radius:50%;font-size:.6rem;color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:700;
+    border:2px solid #040f1e;display:none
+  }
+  @keyframes nfPulse{
+    0%,100%{box-shadow:0 4px 20px #38bdf866}
+    50%{box-shadow:0 4px 32px #38bdf899}
+  }
+  .nf-chat-window{
+    position:fixed;bottom:90px;right:24px;z-index:9991;
+    width:360px;max-height:540px;border-radius:18px;
+    background:#040f1e;border:1px solid #38bdf833;
+    box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 1px #38bdf822;
+    display:flex;flex-direction:column;
+    transform:scale(.85) translateY(20px);opacity:0;
+    transition:all .25s cubic-bezier(.175,.885,.32,1.275);
+    pointer-events:none
+  }
+  .nf-chat-window.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+  .nf-chat-head{
+    padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.07);
+    display:flex;align-items:center;gap:10px;
+    border-radius:18px 18px 0 0;
+    background:linear-gradient(135deg,#38bdf818,#38bdf808)
+  }
+  .nf-avatar{
+    width:36px;height:36px;border-radius:50%;
+    background:linear-gradient(135deg,#38bdf8,#38bdf8aa);
+    display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+    flex-shrink:0;position:relative
+  }
+  .nf-avatar .nf-online{
+    position:absolute;bottom:1px;right:1px;width:9px;height:9px;
+    border-radius:50%;background:#22c55e;border:2px solid #040f1e
+  }
+  .nf-head-info{flex:1}
+  .nf-head-title{font-size:.88rem;font-weight:700;color:#f0f9ff}
+  .nf-head-sub{font-size:.67rem;color:rgba(255,255,255,.4);margin-top:1px}
+  .nf-close{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;
+              font-size:1.1rem;padding:4px;transition:color .15s;line-height:1}
+  .nf-close:hover{color:#f0f9ff}
+  .nf-msgs{
+    flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;
+    min-height:200px;max-height:340px;scrollbar-width:thin;
+    scrollbar-color:#38bdf833 transparent
+  }
+  .nf-msg{max-width:85%;display:flex;flex-direction:column;gap:3px;animation:nfFadeUp .2s ease}
+  .nf-msg.bot{align-self:flex-start}
+  .nf-msg.user{align-self:flex-end}
+  @keyframes nfFadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .nf-bubble{
+    padding:10px 13px;border-radius:14px;font-size:.82rem;line-height:1.55;
+    word-break:break-word
+  }
+  .nf-msg.bot .nf-bubble{
+    background:rgba(255,255,255,.07);color:#f0f9ff;
+    border-radius:4px 14px 14px 14px;border:1px solid rgba(255,255,255,.08)
+  }
+  .nf-msg.user .nf-bubble{
+    background:linear-gradient(135deg,#38bdf8,#38bdf8cc);color:#fff;
+    border-radius:14px 14px 4px 14px
+  }
+  .nf-timestamp{font-size:.6rem;color:rgba(255,255,255,.25);align-self:flex-end}
+  .nf-msg.bot .nf-timestamp{align-self:flex-start}
+  .nf-typing{align-self:flex-start;font-size:.75rem;color:rgba(255,255,255,.35);
+               padding:8px 12px;background:rgba(255,255,255,.05);border-radius:12px;
+               display:none;align-items:center;gap:6px}
+  .nf-typing.show{display:flex}
+  .nf-dot{width:6px;height:6px;border-radius:50%;background:#38bdf8;
+             animation:nfDot 1.2s ease-in-out infinite}
+  .nf-dot:nth-child(2){animation-delay:.2s}
+  .nf-dot:nth-child(3){animation-delay:.4s}
+  @keyframes nfDot{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+  .nf-suggs{
+    padding:8px 14px;display:flex;flex-wrap:wrap;gap:5px;
+    border-top:1px solid rgba(255,255,255,.05)
+  }
+  .nf-sugg{
+    font-size:.7rem;padding:4px 10px;border-radius:14px;cursor:pointer;
+    background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);
+    border:1px solid rgba(255,255,255,.1);transition:all .15s;
+    font-family:inherit;white-space:nowrap
+  }
+  .nf-sugg:hover{background:#38bdf822;border-color:#38bdf844;color:#f0f9ff}
+  .nf-input-row{
+    display:flex;gap:8px;padding:12px 14px;
+    border-top:1px solid rgba(255,255,255,.06)
+  }
+  .nf-input{
+    flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+    border-radius:12px;padding:9px 13px;color:#f0f9ff;font-size:.83rem;
+    font-family:inherit;outline:none;resize:none;transition:border-color .2s;
+    max-height:80px;min-height:38px
+  }
+  .nf-input:focus{border-color:#38bdf877}
+  .nf-input::placeholder{color:rgba(255,255,255,.25)}
+  .nf-send{
+    width:38px;height:38px;border-radius:12px;
+    background:linear-gradient(135deg,#38bdf8,#38bdf8aa);border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:1rem;transition:all .15s;flex-shrink:0
+  }
+  .nf-send:hover{opacity:.88;transform:scale(1.05)}
+  .nf-send:disabled{opacity:.4;cursor:not-allowed}
+  .nf-footer{
+    text-align:center;font-size:.58rem;color:rgba(255,255,255,.15);
+    padding:6px;border-top:1px solid rgba(255,255,255,.04)
+  }
+  @media(max-width:420px){
+    .nf-chat-window{width:calc(100vw - 32px);right:16px;bottom:80px}
+    .nf-chat-fab{right:16px;bottom:16px}
+  }
+</style>
+
+<button class="nf-chat-fab" onclick="nfToggleChat()" id="nf-fab" title="Assistant ClearHub" aria-label="Assistant ClearHub">
+  🍽️
+  <span class="nf-badge" id="nf-badge">1</span>
+</button>
+
+<div class="nf-chat-window" id="nf-chat-win" role="dialog" aria-label="Assistant ClearHub">
+  <div class="nf-chat-head">
+    <div class="nf-avatar">
+      🍽️
+      <span class="nf-online"></span>
+    </div>
+    <div class="nf-head-info">
+      <div class="nf-head-title">Assistant ClearHub</div>
+      <div class="nf-head-sub">Posez vos questions — je réponds en quelques secondes</div>
+    </div>
+    <button class="nf-close" onclick="nfToggleChat()" aria-label="Fermer">✕</button>
+  </div>
+
+  <div class="nf-msgs" id="nf-msgs">
+    <div class="nf-msg bot">
+      <div class="nf-bubble">Bonjour ! Je suis l'assistant de ClearHub. Comment puis-je vous aider ?</div>
+      <div class="nf-timestamp">maintenant</div>
+    </div>
+    <div class="nf-typing" id="nf-typing">
+      <div class="nf-dot"></div><div class="nf-dot"></div><div class="nf-dot"></div>
+      <span>L'assistant réfléchit…</span>
+    </div>
+  </div>
+
+  <div class="nf-suggs" id="nf-suggs"><button class="nf-sugg" onclick="nfSendSugg(this)">Comment fonctionne ClearHub ?</button><button class="nf-sugg" onclick="nfSendSugg(this)">Quels sont les tarifs ?</button><button class="nf-sugg" onclick="nfSendSugg(this)">J'ai un problème avec mon compte</button><button class="nf-sugg" onclick="nfSendSugg(this)">Comment annuler mon abonnement ?</button></div>
+
+  <div class="nf-input-row">
+    <textarea class="nf-input" id="nf-input" placeholder="Votre question…"
+      rows="1" aria-label="Votre question…"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();nfSend()}"></textarea>
+    <button class="nf-send" id="nf-send-btn" onclick="nfSend()" aria-label="Envoyer">↑</button>
+  </div>
+  <div class="nf-footer">Propulsé par NeuroFactory AI</div>
+</div>
+
+<script>
+(function() {
+  const NF_LANG    = 'fr';
+  const NF_NAME    = 'ClearHub';
+  const NF_ERROR   = 'Je suis temporairement indisponible. Réessayez ou contactez-nous.';
+  const NF_TYPING  = document.getElementById('nf-typing');
+  const NF_MSGS    = document.getElementById('nf-msgs');
+  const NF_WIN     = document.getElementById('nf-chat-win');
+  const NF_INPUT   = document.getElementById('nf-input');
+  const NF_BTN     = document.getElementById('nf-send-btn');
+  const NF_BADGE   = document.getElementById('nf-badge');
+  const NF_SUGGS   = document.getElementById('nf-suggs');
+  let nfOpen = false;
+  let nfHistory = [];
+  let nfUnread  = 0;
+  let nfTyping  = false;
+
+  // Show badge after 3s (proactive)
+  setTimeout(() => {
+    if (!nfOpen) {
+      NF_BADGE.style.display = 'flex';
+      nfUnread = 1;
+      NF_BADGE.textContent = '1';
+    }
+  }, 3000);
+
+  window.nfToggleChat = function() {
+    nfOpen = !nfOpen;
+    NF_WIN.classList.toggle('open', nfOpen);
+    if (nfOpen) {
+      NF_INPUT.focus();
+      NF_BADGE.style.display = 'none';
+      nfUnread = 0;
+      NF_MSGS.scrollTop = NF_MSGS.scrollHeight;
+    }
+  };
+
+  window.nfSendSugg = function(btn) {
+    const text = btn.textContent;
+    NF_SUGGS.style.display = 'none';
+    nfAddMsg(text, 'user');
+    nfFetch(text);
+  };
+
+  window.nfSend = function() {
+    const text = NF_INPUT.value.trim();
+    if (!text || nfTyping) return;
+    NF_INPUT.value = '';
+    NF_INPUT.style.height = 'auto';
+    NF_SUGGS.style.display = 'none';
+    nfAddMsg(text, 'user');
+    nfFetch(text);
+  };
+
+  function nfAddMsg(text, role) {
+    const now = new Date();
+    const ts  = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+    const div = document.createElement('div');
+    div.className = 'nf-msg ' + role;
+    div.innerHTML = `<div class="nf-bubble">${nfEsc(text).replace(/\n/g,'<br>')}</div><div class="nf-timestamp">${ts}</div>`;
+    NF_MSGS.insertBefore(div, NF_TYPING);
+    NF_MSGS.scrollTop = NF_MSGS.scrollHeight;
+    if (role === 'user') nfHistory.push({role:'user', content: text});
+  }
+
+  function nfEsc(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  async function nfFetch(text) {
+    nfTyping = true;
+    NF_BTN.disabled = true;
+    NF_TYPING.classList.add('show');
+    NF_MSGS.scrollTop = NF_MSGS.scrollHeight;
+    try {
+      const r = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          message: text,
+          history: nfHistory.slice(-8),  // 4 échanges max en contexte
+          lang: NF_LANG
+        })
+      });
+      const d = await r.json();
+      const reply = d.reply || NF_ERROR;
+      nfHistory.push({role: 'assistant', content: reply});
+      NF_TYPING.classList.remove('show');
+      nfAddMsg(reply, 'bot');
+    } catch(e) {
+      NF_TYPING.classList.remove('show');
+      nfAddMsg(NF_ERROR, 'bot');
+    } finally {
+      nfTyping = false;
+      NF_BTN.disabled = false;
+      NF_INPUT.focus();
+    }
+  }
+
+  // Auto-resize textarea
+  NF_INPUT.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 80) + 'px';
+  });
+})();
+</script>
+<!-- ══ FIN CHAT WIDGET ══════════════════════════════════════════════ -->
+
+</body>
+</html>

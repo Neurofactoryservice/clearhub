@@ -1,0 +1,22 @@
+# Robots.txt — ClearHub
+User-agent: *
+Allow: /
+Disallow: /app
+Disallow: /api/
+Disallow: /*.env
+Disallow: /data/
+Disallow: /neurofactory.db
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /app
+Disallow: /api/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://clearhub.onrender.com/sitemap.xml
+Sitemap: https://clearhub.onrender.com/sitemap-images.xml
+Host: https://clearhub.onrender.com

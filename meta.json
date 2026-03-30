@@ -1,0 +1,23 @@
+{
+  "name": "ClearHub",
+  "type": "saas",
+  "lang": "fr",
+  "sector": "lifestyle",
+  "version": "v22",
+  "trend_score": 65,
+  "search_volume": 0,
+  "concept": "Gestion de Recettes",
+  "description": "Planifiez vos repas, générez vos listes de courses.",
+  "tagline": "Gérez votre lifestyle comme jamais auparavant",
+  "emoji": "🍽️",
+  "theme": "arctic",
+  "design": "aurora",
+  "generated_at": "2026-03-30T05:22:26.734452+00:00",
+  "has_marketplace": false,
+  "commission_rate": 0,
+  "seo": {
+    "canonical": "https://clearhub.onrender.com",
+    "og_image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=85&auto=format&fit=crop",
+    "keywords_count": 3
+  }
+}

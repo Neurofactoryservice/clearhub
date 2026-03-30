@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://clearhub.onrender.com/</loc>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=85&auto=format&fit=crop</image:loc>
+      <image:title>ClearHub — Gestion de Recettes</image:title>
+      <image:caption>Planifiez vos repas, générez vos listes de courses.</image:caption>
+    </image:image>
+  </url>
+</urlset>

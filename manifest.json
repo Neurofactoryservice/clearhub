@@ -1,0 +1,42 @@
+{
+  "name": "ClearHub",
+  "short_name": "ClearHub",
+  "description": "Planifiez vos repas, générez vos listes de courses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#040f1e",
+  "theme_color": "#38bdf8",
+  "lang": "fr",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍽️%3C/text%3E%3C/svg%3E",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=85&auto=format&fit=crop",
+      "sizes": "1200x630",
+      "type": "image/jpeg"
+    }
+  ],
+  "categories": [
+    "business",
+    "productivity"
+  ],
+  "shortcuts": [
+    {
+      "name": "Tarifs",
+      "url": "/pricing",
+      "description": "ClearHub pricing"
+    },
+    {
+      "name": "Fonctionnalités",
+      "url": "/features",
+      "description": "ClearHub features"
+    }
+  ]
+}

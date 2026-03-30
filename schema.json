@@ -1,0 +1,146 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://clearhub.onrender.com/#organization",
+      "name": "ClearHub",
+      "url": "https://clearhub.onrender.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=85&auto=format&fit=crop",
+        "width": 512,
+        "height": 512
+      },
+      "description": "Planifiez vos repas, générez vos listes de courses.",
+      "foundingDate": "2026",
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://clearhub.onrender.com/#website",
+      "url": "https://clearhub.onrender.com",
+      "name": "ClearHub",
+      "description": "Planifiez vos repas, générez vos listes de courses.",
+      "inLanguage": "fr",
+      "publisher": {
+        "@id": "https://clearhub.onrender.com/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://clearhub.onrender.com/?s={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://clearhub.onrender.com/#main",
+      "name": "ClearHub",
+      "description": "Planifiez vos repas, générez vos listes de courses.",
+      "url": "https://clearhub.onrender.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "screenshot": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=85&auto=format&fit=crop",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "19.99",
+          "priceCurrency": "EUR",
+          "billingDuration": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "MON"
+          }
+        },
+        "availability": "https://schema.org/InStock",
+        "trialOffer": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "description": "Essai gratuit 7 jours"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "247",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "publisher": {
+        "@id": "https://clearhub.onrender.com/#organization"
+      },
+      "inLanguage": "fr",
+      "datePublished": "2026-03-30",
+      "dateModified": "2026-03-30",
+      "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=85&auto=format&fit=crop",
+      "featureList": [
+        "Recettes illimitées",
+        "Valeurs nutritionnelles",
+        "Import blog",
+        "Famille",
+        "Livraison"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://clearhub.onrender.com/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ClearHub",
+          "item": "https://clearhub.onrender.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Fonctionnalités",
+          "item": "https://clearhub.onrender.com/features"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tarifs",
+          "item": "https://clearhub.onrender.com/pricing"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://clearhub.onrender.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce que ClearHub ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ClearHub propose gestion de recettes — essai gratuit 7 jours. Planifiez vos repas, générez vos listes de courses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment fonctionne ClearHub ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ClearHub propose gestion de recettes — essai gratuit 7 jours. Planifiez vos repas, générez vos listes de courses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ClearHub est-il gratuit ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ClearHub propose gestion de recettes — essai gratuit 7 jours. Planifiez vos repas, générez vos listes de courses."
+          }
+        }
+      ]
+    }
+  ]
+}

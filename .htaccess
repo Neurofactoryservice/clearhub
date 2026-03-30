@@ -1,0 +1,52 @@
+# .htaccess — ClearHub — Optimisations Apache
+Options -Indexes
+ServerSignature Off
+
+# Compression Gzip
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml font/woff2
+</IfModule>
+
+# Cache navigateur
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/json "access plus 1 hour"
+</IfModule>
+
+# Headers sécurité
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options nosniff
+  Header always set X-Frame-Options SAMEORIGIN
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy strict-origin-when-cross-origin
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header set Cache-Control "public, max-age=31536000, immutable" env=long_cache
+</IfModule>
+
+# Redirects HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteRule ^www\.(.+)$ https://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# Protection fichiers sensibles
+<FilesMatch "(\.env|stripe\.env|\.git|server\.py|db\.py|webhook\.py|\.db)">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Page 404
+ErrorDocument 404 /404.html
+ErrorDocument 500 /404.html

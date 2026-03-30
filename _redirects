@@ -1,0 +1,10 @@
+# Netlify _redirects — ClearHub
+# Clean URLs
+/features    /features.html    200
+/pricing     /pricing.html     200
+/about       /about.html       200
+/contact     /contact.html     200
+/blog        /blog.html        200
+/merci       /merci.html       200
+/login       /login.html       200
+/*           /index.html       404
