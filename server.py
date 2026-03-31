@@ -6,8 +6,8 @@ import os, sqlite3, hashlib, secrets, json, smtplib
 from datetime import datetime, timedelta, timezone
 from functools import wraps
 from pathlib import Path
-from flask import Flask, request, jsonify, send_file, redirect, make_response
-, send_from_directorytry:
+from flask import Flask, request, jsonify, send_file, redirect, make_response, send_from_directory
+try:
     import jwt; JWT_OK=True
 except ImportError:
     JWT_OK=False
@@ -250,9 +250,7 @@ def stripe_connect_refresh():
             )
             return redirect(link.url)
         except Exception as e:
-            return f'<html><body style="font-family:sans-serif;background:#0a0a12;color:#f1f5f9;text-align:center;padding:80px">
-                <h2>⚠️ Lien expiré</h2><p>{str(e)[:200]}</p>
-                <a href="/" style="color:#6366f1">← Retour</a></body></html>'
+            return f'<html><body style="font-family:sans-serif;background:#0a0a12;color:#f1f5f9;text-align:center;padding:80px"><h2>⚠️ Lien expiré</h2><p>{str(e)[:200]}</p><a href="/" style="color:#6366f1">← Retour</a></body></html>'
     return redirect("/?connect_error=expired")
 
 @app.route("/api/connect/status")
@@ -957,8 +955,8 @@ def create_booking():
         try:
             import stripe; stripe.api_key=stripe_key
             provider_acct=db.execute("SELECT stripe_account_id FROM users WHERE id=?", [listing["provider_id"]]).fetchone()
-            pi_kwargs={"amount":amount_cts,"currency":"eur","capture_method":"manual","automatic_payment_methods":{"enabled":True},,
-                        "metadata":{"booking_id":str(booking_id),"listing_id":str(listing_id),"commission":str(commission),"commission_cts":str(fee_cts),"provider_id":str(listing["provider_id"])}}}
+            pi_kwargs={"amount":amount_cts,"currency":"eur","capture_method":"manual","automatic_payment_methods":{"enabled":True},
+                        "metadata":{"booking_id":str(booking_id),"listing_id":str(listing_id),"commission":str(commission),"commission_cts":str(fee_cts),"provider_id":str(listing["provider_id"])}}
             if provider_acct and provider_acct["stripe_account_id"]:
                 # Séquestre : transfert déclenché après validation acheteur
                 pi_kwargs["transfer_data"]={"destination":provider_acct["stripe_account_id"]}
@@ -1446,13 +1444,11 @@ if render_url and not os.path.exists(".webhook_registered"):
                 "payment_intent.succeeded","payment_intent.amount_capturable_updated",
                 "payment_intent.canceled","transfer.created","account.updated"]
             wh = _st.WebhookEndpoint.create(url=wh_url, enabled_events=events)
-            with open(".webhook_registered","w") as f: f.write(wh.id+"
-"+wh.secret)
+            with open(".webhook_registered","w") as f: f.write(wh.id+"\n"+wh.secret)
             os.environ["STRIPE_WEBHOOK_SECRET"] = wh.secret
             print(f"✅ Webhook auto-enregistré: {wh.id}")
         elif os.path.exists(".webhook_registered"):
-            data = open(".webhook_registered").read().split("
-")
+            data = open(".webhook_registered").read().split("\n")
             if len(data) >= 2: os.environ["STRIPE_WEBHOOK_SECRET"] = data[1]
     except Exception as _e: print(f"⚠️  Auto-webhook: {_e}")
 
