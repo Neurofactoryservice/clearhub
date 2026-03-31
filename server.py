@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ClearHub — Flask Server (NeuroFactory v9)
+"""BoosBrand — Flask Server (NeuroFactory v9)
 Auth JWT · Stripe · Trial · Webhooks · Contact · API complète
 """
 import os, sqlite3, hashlib, secrets, json, smtplib
@@ -23,38 +23,38 @@ PRICE_ID           = os.getenv("STRIPE_PRICE_ID", "")
 WEBHOOK_SECRET     = os.getenv("STRIPE_WEBHOOK_SECRET", "")
 JWT_SECRET         = os.getenv("JWT_SECRET", secrets.token_hex(32))
 BASE_URL           = os.getenv("BASE_URL", "http://localhost:5000")
-SITE_NAME          = "ClearHub"
-SITE_SLUG          = "clearhub"
+SITE_NAME          = "BoosBrand"
+SITE_SLUG          = "boosbrand"
 LANG               = "fr"
 SITE_TYPE          = "saas"
 PUB_REINVEST_RATE  = 0.15
 PUB_STOP_REVENUE   = 10000.0
 PUB_MIN_BUDGET     = 5.0
 PUB_MAX_BUDGET     = 1500.0
-SECTOR             = "lifestyle"
-SITE_NAME           = "ClearHub"
-STRIPE_CONNECT_ACCOUNT_ID = "acct_1TGYHLFOV2M7U8hh"
-CHAT_SYSTEM_PROMPT  = """Tu es l'assistant IA de ClearHub, une plateforme Gestion de Recettes.
+SECTOR             = "marketing"
+SITE_NAME           = "BoosBrand"
+STRIPE_CONNECT_ACCOUNT_ID = "acct_1TGYG12VTjUdAXll"
+CHAT_SYSTEM_PROMPT  = """Tu es l'assistant IA de BoosBrand, une plateforme Emailing & Automation.
 
 INFORMATIONS DU SITE :
-- Nom : ClearHub
-- Concept : Gestion de Recettes
-- Description : Planifiez vos repas, générez vos listes de courses.
-- Secteur : lifestyle
+- Nom : BoosBrand
+- Concept : Emailing & Automation
+- Description : Campagnes email personnalisées avec automatisations.
+- Secteur : marketing
 - Type : SaaS
 - Tarification : 19.99€/mois (Plan Pro)
 - Essai : 7 jours d'essai gratuit
 
 FONCTIONNALITÉS GRATUITES :
-- 50 recettes
-- Planning hebdo basique
-- Liste de courses
+- 500 emails/mois
+- 1 séquence
+- Templates basiques
 
 FONCTIONNALITÉS PRO :
-- Recettes illimitées
-- Valeurs nutritionnelles
-- Import blog
-- Famille
+- Emails illimités
+- Séquences avancées
+- A/B testing
+- Analytics
 
 TES RÈGLES :
 1. Réponds UNIQUEMENT en français, de façon concise et utile (max 3-4 phrases)
@@ -63,7 +63,7 @@ TES RÈGLES :
 4. Pour les questions de facturation/remboursement, demande de contacter le support
 5. Sois chaleureux, professionnel et bienveillant
 6. N'invente jamais d'informations que tu ne connais pas
-7. Si on te demande ta nature, dis que tu es l'assistant IA de ClearHub
+7. Si on te demande ta nature, dis que tu es l'assistant IA de BoosBrand
 8. Pour les problèmes urgents : "Contactez-nous sur la page Contact pour un support prioritaire"
 
 PAGE CONTACT : /contact
@@ -77,19 +77,19 @@ CHAT_REFUND_REPLY   = 'Pour toute demande de remboursement, contactez notre équ
 CHAT_CONTACT_REPLY  = 'Notre équipe est disponible via la page /contact. Nous répondons généralement sous 24h ouvrées.'
 CHAT_TRIAL_REPLY    = "Oui ! Nous offrons 7 jours d'essai gratuit sans carte bancaire. Commencez sur /login."
 CHAT_FALLBACK_RESPONSES = {}
-SITE_NAME           = "ClearHub"
-STRIPE_CONNECT_ACCOUNT_ID = "acct_1TGYHLFOV2M7U8hh"
+SITE_NAME           = "BoosBrand"
+STRIPE_CONNECT_ACCOUNT_ID = "acct_1TGYG12VTjUdAXll"
 CROSS_PROMO_AFFINITY= {'finance': {'similar': ['personal-finance', 'analytics'], 'complementary': ['crm', 'ecommerce', 'legal', 'hr']}, 'personal-finance': {'similar': ['finance', 'analytics'], 'complementary': ['legal', 'wellness', 'lifestyle']}, 'productivity': {'similar': ['crm', 'hr', 'analytics'], 'complementary': ['finance', 'marketing', 'support']}, 'crm': {'similar': ['productivity', 'marketing', 'support'], 'complementary': ['finance', 'ecommerce', 'analytics']}, 'hr': {'similar': ['productivity', 'crm'], 'complementary': ['finance', 'legal', 'education']}, 'analytics': {'similar': ['marketing', 'crm', 'social-analytics'], 'complementary': ['finance', 'ecommerce', 'support']}, 'marketing': {'similar': ['social-management', 'social-content', 'social-analytics'], 'complementary': ['crm', 'ecommerce', 'analytics', 'ai']}, 'social-management': {'similar': ['marketing', 'social-content', 'social-calendar'], 'complementary': ['social-analytics', 'social-hashtags', 'social-influencer']}, 'social-content': {'similar': ['social-management', 'social-video', 'marketing'], 'complementary': ['social-analytics', 'social-hashtags', 'ai']}, 'social-calendar': {'similar': ['social-management', 'social-content'], 'complementary': ['marketing', 'analytics', 'social-analytics']}, 'social-analytics': {'similar': ['analytics', 'social-management', 'social-competitive'], 'complementary': ['marketing', 'social-content', 'crm']}, 'social-hashtags': {'similar': ['social-content', 'social-management'], 'complementary': ['social-analytics', 'marketing']}, 'social-influencer': {'similar': ['social-management', 'marketing'], 'complementary': ['social-content', 'social-analytics', 'ecommerce']}, 'social-video': {'similar': ['social-content', 'social-management'], 'complementary': ['marketing', 'social-analytics']}, 'social-competitive': {'similar': ['analytics', 'social-analytics'], 'complementary': ['marketing', 'crm', 'social-management']}, 'social-monitoring': {'similar': ['social-analytics', 'social-competitive'], 'complementary': ['crm', 'support', 'marketing']}, 'social-linkinbio': {'similar': ['social-management', 'social-content'], 'complementary': ['marketing', 'ecommerce']}, 'social-community': {'similar': ['social-management', 'support'], 'complementary': ['crm', 'marketing']}, 'ecommerce': {'similar': ['marketing', 'crm'], 'complementary': ['finance', 'analytics', 'support', 'rental-fashion']}, 'support': {'similar': ['crm', 'productivity'], 'complementary': ['ecommerce', 'marketing', 'analytics']}, 'health': {'similar': ['wellness', 'p2p-caregiving'], 'complementary': ['lifestyle', 'booking', 'p2p-childcare']}, 'wellness': {'similar': ['health', 'lifestyle'], 'complementary': ['p2p-caregiving', 'booking', 'education']}, 'lifestyle': {'similar': ['wellness', 'health'], 'complementary': ['personal-finance', 'booking', 'ecommerce']}, 'education': {'similar': ['p2p-tutoring', 'ai'], 'complementary': ['productivity', 'hr', 'booking']}, 'real-estate': {'similar': ['rental-vacation', 'rental-workspace'], 'complementary': ['finance', 'legal', 'booking']}, 'ai': {'similar': ['marketing', 'analytics', 'productivity'], 'complementary': ['crm', 'support', 'education', 'social-content']}, 'security': {'similar': ['ai', 'analytics'], 'complementary': ['crm', 'productivity', 'hr']}, 'legal': {'similar': ['finance', 'hr'], 'complementary': ['crm', 'ecommerce', 'real-estate']}, 'booking': {'similar': ['p2p-handyman', 'p2p-cleaning', 'p2p-caregiving'], 'complementary': ['crm', 'marketing', 'rental-workspace']}, 'p2p-pets': {'similar': ['p2p-caregiving', 'p2p-childcare'], 'complementary': ['p2p-handyman', 'p2p-gardening', 'booking']}, 'p2p-handyman': {'similar': ['p2p-cleaning', 'p2p-tools', 'p2p-gardening'], 'complementary': ['p2p-delivery', 'rental-trucks', 'booking']}, 'p2p-tutoring': {'similar': ['education', 'p2p-caregiving'], 'complementary': ['p2p-childcare', 'wellness', 'booking']}, 'p2p-cleaning': {'similar': ['p2p-handyman', 'p2p-gardening'], 'complementary': ['p2p-tools', 'booking', 'rental-workspace']}, 'p2p-gardening': {'similar': ['p2p-handyman', 'p2p-cleaning'], 'complementary': ['p2p-tools', 'rental-trucks']}, 'p2p-delivery': {'similar': ['p2p-rideshare', 'p2p-carpool'], 'complementary': ['ecommerce', 'p2p-handyman']}, 'p2p-caregiving': {'similar': ['p2p-childcare', 'health'], 'complementary': ['p2p-cleaning', 'wellness', 'booking']}, 'p2p-childcare': {'similar': ['p2p-caregiving', 'p2p-tutoring'], 'complementary': ['p2p-pets', 'wellness', 'education']}, 'p2p-techsupport': {'similar': ['ai', 'security'], 'complementary': ['productivity', 'crm', 'support']}, 'p2p-tools': {'similar': ['p2p-handyman', 'rental-trucks'], 'complementary': ['p2p-gardening', 'p2p-cleaning']}, 'p2p-rideshare': {'similar': ['p2p-delivery', 'p2p-carpool', 'rental-vehicles'], 'complementary': ['p2p-handyman', 'booking']}, 'p2p-carpool': {'similar': ['p2p-rideshare', 'rental-vehicles'], 'complementary': ['p2p-delivery', 'lifestyle']}, 'p2p-barter': {'similar': ['p2p-tools', 'ecommerce'], 'complementary': ['p2p-handyman', 'lifestyle']}, 'rental-vehicles': {'similar': ['p2p-rideshare', 'p2p-carpool'], 'complementary': ['rental-trucks', 'p2p-delivery', 'booking']}, 'rental-vacation': {'similar': ['real-estate', 'rental-workspace'], 'complementary': ['rental-events', 'rental-vehicles', 'booking']}, 'rental-workspace': {'similar': ['rental-vacation', 'booking'], 'complementary': ['productivity', 'crm', 'real-estate']}, 'rental-events': {'similar': ['rental-venues', 'booking'], 'complementary': ['rental-fashion', 'rental-photo', 'p2p-handyman']}, 'rental-venues': {'similar': ['rental-events', 'rental-workspace'], 'complementary': ['booking', 'rental-fashion', 'ecommerce']}, 'rental-fashion': {'similar': ['ecommerce', 'lifestyle'], 'complementary': ['rental-events', 'social-influencer']}, 'rental-sports': {'similar': ['health', 'wellness'], 'complementary': ['rental-vacation', 'booking', 'p2p-carpool']}, 'rental-trucks': {'similar': ['p2p-tools', 'p2p-handyman'], 'complementary': ['p2p-delivery', 'rental-vehicles']}, 'rental-photo': {'similar': ['social-content', 'social-video'], 'complementary': ['rental-events', 'marketing']}, 'rental-boats': {'similar': ['rental-vacation', 'rental-sports'], 'complementary': ['rental-vehicles', 'booking', 'lifestyle']}}
 UPSELL_PRICE        = 9.99
 PRICE               = 19.99
 UPSELL_PRICE_ID     = ""  # À renseigner: Price ID Stripe 9.99€ (stripe.env)
-CROSS_SELL_GROUP    = ""
-CROSS_SELL_SAME_SECTORS = ['lifestyle']
+CROSS_SELL_GROUP    = "reseaux_sociaux_marketing"
+CROSS_SELL_SAME_SECTORS = ['social-management', 'social-content', 'social-calendar', 'social-analytics', 'social-hashtags', 'social-influencer', 'social-video', 'social-competitive', 'social-monitoring', 'social-linkinbio', 'social-community', 'social-podcast', 'social-live', 'mkt-affiliate', 'mkt-referral', 'mkt-landing', 'mkt-ab', 'mkt-push', 'mkt-chat', 'marketing']
 PRICE_AMOUNT       = 19.99
 CURRENCY           = "eur"
 TRIAL_DAYS         = 7
-DESCRIPTION        = "Planifiez vos repas, générez vos listes de courses."
-TAGLINE            = "Gérez votre lifestyle comme jamais auparavant"
+DESCRIPTION        = "Campagnes email personnalisées avec automatisations."
+TAGLINE            = "La solution emailing & automation qui change tout"
 
 init_db()
 
@@ -141,10 +141,14 @@ def require_active(f):
 
 def send_file_safe(filename, fallback=None):
     """Sert un fichier HTML avec gestion d'erreur propre."""
-    p=Path(filename)
-    if p.exists() and p.is_file(): return send_file(filename)
-    if fallback and Path(fallback).exists(): return send_file(fallback)
-    return ("Page introuvable",404)
+    # Résoudre le chemin par rapport au dossier du script (robuste sur Render)
+    base = Path(__file__).parent
+    p = base / filename
+    if p.exists() and p.is_file(): return send_from_directory(str(base), filename)
+    if fallback:
+        pf = base / fallback
+        if pf.exists(): return send_from_directory(str(base), fallback)
+    return ("Page introuvable", 404)
 
 # ── Pages statiques ──────────────────────────────────────────
 @app.route("/")
@@ -547,9 +551,6 @@ def utilisateurs_page():
     if SITE_TYPE not in ("p2p","rental"): return redirect("/")
     return send_file_safe("utilisateurs.html")
 
-@app.route("/partenaires")
-def partenaires_page(): return send_file_safe("partenaires.html")
-
 @app.route("/pricing")
 def pricing(): return send_file_safe("pricing.html","index.html")
 
@@ -831,7 +832,7 @@ def contact_form():
     if admin_email:
         try:
             from mailer import _send
-            _send(admin_email, f"[ClearHub] Nouveau contact de {nom}",
+            _send(admin_email, f"[BoosBrand] Nouveau contact de {nom}",
                   f"<p><b>Nom:</b> {nom}</p><p><b>Email:</b> {email}</p><p><b>Message:</b><br>{msg}</p>")
         except: pass
     return jsonify({"ok":True,"message":"Message envoyé, nous vous répondrons sous 24h"})
